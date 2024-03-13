@@ -1,98 +1,48 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Alert, Button, StyleSheet, Text, View} from 'react-native';
+import Slider from '@react-native-community/slider';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function Page({children}: PropsWithChildren<{}>) {
+  return (
+    // eslint-disable-next-line react-native/no-inline-styles
+    <View style={{flex: 1, alignItems: 'center', marginTop: 100}}>
+      {children}
+    </View>
+  );
+}
+function Section({title, children}: PropsWithChildren<{title: string}>) {
   return (
     <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      {children}
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+export default function App() {
+  const [value, setValue] = React.useState(0.5);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Page>
+      <Section title="Standard">
+        <Text>Value: {value && +value.toFixed(3)}</Text>
+        <Slider value={value} onValueChange={setValue} />
+      </Section>
+      <Section title="Custom Color">
+        <Text>Value: {value && +value.toFixed(3)}</Text>
+        <Slider
+          value={value}
+          minimumTrackTintColor="red"
+          maximumTrackTintColor="green"
+          onValueChange={setValue}
+          thumbTintColor="gold"
+        />
+      </Section>
+      <Section title="Test interaction">
+        <Button title="Test" onPress={() => Alert.alert('hi')} />
+      </Section>
+    </Page>
   );
 }
 
@@ -105,14 +55,4 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
 });
-
-export default App;
