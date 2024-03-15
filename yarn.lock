@@ -2338,10 +2338,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/slider@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "@react-native-community/slider@npm:4.5.0"
-  checksum: 65f0399ab0b3a052b257ae4004364cb0ea01a0e8749c7547dcf24d7f2f448a807a49eb6c1daaa3b0037b2ac576d86372a7818ffe8b4421cddf3d307c3744d709
+"@react-native-community/slider@file:./react-native-community-slider-4.6.0.tgz::locator=SliderLibTest%40workspace%3A.":
+  version: 4.6.0
+  resolution: "@react-native-community/slider@file:./react-native-community-slider-4.6.0.tgz::locator=SliderLibTest%40workspace%3A."
+  checksum: c92bddb16227f6318f284b8887b4d29e34ef83f12fa4e7fa524fa2322d98a9ce21f62ca06d8c3f61e268dd1b955918a9a8a872b30ffebed25e61ec2df5c0eef9
   languageName: node
   linkType: hard
 
@@ -3021,7 +3021,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
-    "@react-native-community/slider": ^4.5.0
+    "@react-native-community/slider": ./react-native-community-slider-4.6.0.tgz
     "@react-native/babel-preset": 0.74.2
     "@react-native/eslint-config": 0.74.1
     "@react-native/metro-config": 0.74.2
